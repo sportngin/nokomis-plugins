@@ -10,8 +10,8 @@ function create() {
 
 function init(C, conf) {
   return new C({
-    req:req,
-    res:res,
+    req:req(),
+    res:res(),
     route:route,
     config:conf
   })

@@ -5,13 +5,14 @@
   "main" : "./index.js",
   "dependencies" : {
     "bunyan": "*",
-    "cookies": "~0.2.2",
+    "cookies": "~0.3.x",
     "error-page" : "*",
     "extendable" : ">=0.0.3",
     "glob": "3",
     "keygrip": "~0.2.0",
-    "negotiator": "~0.2.3",
-    "nokomis": "*",
+    "krumkake": "*",
+    "negotiator": "~0.2.x",
+    "nokomis": "git://github.com/tstmedia/nokomis.git#plugin-removal",
     "underscore" : "*",
     "request-timeout" : "*"
   },

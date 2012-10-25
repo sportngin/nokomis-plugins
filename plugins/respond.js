@@ -1,4 +1,6 @@
 
+// requires contentNegotiator plugin
+
 var Plugin = require('nokomis/plugin')
 
 var Respond = module.exports = Plugin.extend({
@@ -15,7 +17,7 @@ var Respond = module.exports = Plugin.extend({
     this.res.statusCode = code || 302
     this.res.setHeader('location', target)
     var avail = ['text/html', 'application/json']
-    var mt = req.contentNegotiator.preferredMediaType(avail)
+    var mt = this.preferredMediaType(avail)
     if (mt === 'application/json') {
       this.json({ redirect: target, statusCode: code })
     } else {

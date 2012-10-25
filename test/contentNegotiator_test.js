@@ -50,6 +50,12 @@ describe('Content Negotiator', function() {
       done()
     })
 
+    it('should override controllers mediaType method', function(done) {
+      instance.mediaType()
+      assert(instance._neg.preferredMediaType.calledOnce)
+      done()
+    })
+
   })
 
   describe('Language', function() {

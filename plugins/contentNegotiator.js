@@ -6,6 +6,8 @@ var ContentNegotiator = module.exports = Plugin.extend({
 
   run: function(instance) {
     instance._neg = new Negotiator(instance.req)
+    instance.mediaType = this._mediaType
+    delete instance._mediaType
   },
 
   preferredMediaType: function() {
@@ -30,6 +32,11 @@ var ContentNegotiator = module.exports = Plugin.extend({
 
   preferredEncodings: function() {
     return this._neg.preferredEncodings.apply(this._neg, arguments)
+  },
+
+  _mediaType: function() {
+    var type = this.preferredMediaType(this.availableMediaTypes)
+    return type || this._defaultMediaType
   }
 
 })

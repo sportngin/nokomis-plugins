@@ -1,16 +1,16 @@
 var assert = require('assert')
 var sinon = require('sinon')
 var ControllerFactory = require('./fixtures/controller')
-var Cookies = require('../plugins/cookies')
+var Session = require('../plugins/session')
 
 var Controller
 var instance
 
-describe('Cookies', function() {
+describe('Session', function() {
 
   beforeEach(function(done) {
     Controller = ControllerFactory.create()
-    Controller.addPlugin(Cookies)
+    Controller.addPlugin(Session)
     instance = ControllerFactory.init(Controller)
 
     done()
@@ -18,13 +18,8 @@ describe('Cookies', function() {
 
   describe('Exists', function() {
 
-    it('should add cookies object to controller', function(done) {
-      assert(instance.cookies)
-      done()
-    })
-
-    it('should add cookies object to request', function(done) {
-      assert(instance.req.cookies)
+    it('should add session object to controller', function(done) {
+      assert(instance.session)
       done()
     })
 

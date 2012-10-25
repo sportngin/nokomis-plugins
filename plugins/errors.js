@@ -33,6 +33,7 @@ module.exports = Plugin.extend({
     var domain = Domain.create()
     domain.add(req)
     domain.add(res)
+    domain.add(instance)
 
     domain.on('error', function(err) {
       try {

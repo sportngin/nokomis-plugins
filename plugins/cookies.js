@@ -6,7 +6,7 @@ var Keygrip = require('keygrip')
 module.exports = Plugin.extend({
 
   initialize: function(config) {
-    this.cookieKeys = new Keygrip(config.secrets)
+    this.cookieKeys = config && config.secrets ? new Keygrip(config.secrets) : undefined
   },
 
   run: function(instance) {
