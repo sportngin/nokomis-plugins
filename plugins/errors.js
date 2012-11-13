@@ -11,7 +11,7 @@ module.exports = Plugin.extend({
     this.config = config
   },
 
-  run: function(instance) {
+  run: function(instance, callback) {
     var req = instance.req
     var res = instance.res
     var config = this.config
@@ -62,6 +62,8 @@ module.exports = Plugin.extend({
         domain.dispose()
       }
     })
+
+    callback()
   }
 
 })

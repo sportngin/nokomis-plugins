@@ -9,7 +9,7 @@ module.exports = Plugin.extend({
     this._logger = bunyan.createLogger(config || { name:'Nokomis App' })
   },
 
-  run: function(instance) {
+  run: function(instance, callback) {
     var req = instance.req
     var res = instance.res
     instance.log = res.log = req.log = this._logger.child({
@@ -33,6 +33,8 @@ module.exports = Plugin.extend({
     req.on('finish', function() {
       req.log.info({ res: res })
     })
+
+    callback()
   }
 
 })

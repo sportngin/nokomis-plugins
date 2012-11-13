@@ -9,10 +9,11 @@ module.exports = Plugin.extend({
     this.cookieKeys = config && config.secrets ? new Keygrip(config.secrets) : undefined
   },
 
-  run: function(instance) {
+  run: function(instance, callback) {
     var req = instance.req
     var res = instance.res
     instance.cookies = req.cookies = new Cookies(req, res, this.cookieKeys)
+    callback()
   }
 
 })

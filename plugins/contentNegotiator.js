@@ -4,10 +4,11 @@ var Negotiator = require('negotiator')
 
 var ContentNegotiator = module.exports = Plugin.extend({
 
-  run: function(instance) {
+  run: function(instance, callback) {
     instance._neg = new Negotiator(instance.req)
     instance.mediaType = this._mediaType
     delete instance._mediaType
+    callback()
   },
 
   preferredMediaType: function() {

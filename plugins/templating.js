@@ -12,9 +12,10 @@ module.exports = Plugin.extend({
     tmpl.templatePath = config.templatePath || tmpl.templatePath
   },
 
-  run: function(instance) {
+  run: function(instance, callback) {
     instance.tmpl = this.tmpl
     instance.render = this.render
+    callback()
   },
 
   // this can be overridden in your subclassed template plugin or an individual controller

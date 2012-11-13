@@ -14,7 +14,7 @@ module.exports = Plugin.extend({
 
   },
 
-  run: function(instance) {
+  run: function(instance, callback) {
     //instance.cookies = new Cookies(instance.req, instance.res, config.cookiesKeys)
     var req = instance.req
 
@@ -55,6 +55,8 @@ module.exports = Plugin.extend({
         })
       }
     }
+
+    callback()
   }
 
 })
