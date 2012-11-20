@@ -8,7 +8,7 @@ var _ = require('underscore')
 module.exports = Plugin.extend({
 
   initialize: function(config) {
-    this.config = config
+    this.config = config || {}
   },
 
   run: function(instance, callback) {
@@ -107,11 +107,15 @@ function handle500(req, res, data) {
 function handleError(req, res, data, template) {
   console.error('Responding with error', data)
 
-  delete data.options
-  delete data.stack
-  delete data.error
+  var config = this.config || {}
+  if (config.NODE_ENV != 'development') {
+    delete data.options
+    delete data.stack
+    delete data.error
+  }
 
   this.template = template || 'errors/default'
+  this.templateOptions.layout = 'errors/layout'
   this.model = data
   return this._render(template, data)
 }
