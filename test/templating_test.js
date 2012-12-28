@@ -14,8 +14,7 @@ describe('Templating', function() {
     Controller = ControllerFactory.create()
     Controller.addPlugin(Templating, {templatePath:'../test/fixtures/templates'})
     instance = ControllerFactory.init(Controller)
-
-    done()
+    instance.runPlugins(done)
   })
 
   describe('Exists', function() {

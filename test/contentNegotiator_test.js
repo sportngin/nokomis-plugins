@@ -13,15 +13,16 @@ describe('Content Negotiator', function() {
     Controller.addPlugin(ContentNegotiator)
     instance = ControllerFactory.init(Controller)
 
-    // override the negotiator methods with spys
-    instance._neg.preferredMediaType = sinon.spy()
-    instance._neg.preferredMediaTypes = sinon.spy()
-    instance._neg.preferredLanguage = sinon.spy()
-    instance._neg.preferredLanguages = sinon.spy()
-    instance._neg.preferredEncoding = sinon.spy()
-    instance._neg.preferredEncodings = sinon.spy()
-
-    done()
+    instance.runPlugins(function(){
+      // override the negotiator methods with spys
+      instance._neg.preferredMediaType = sinon.spy()
+      instance._neg.preferredMediaTypes = sinon.spy()
+      instance._neg.preferredLanguage = sinon.spy()
+      instance._neg.preferredLanguages = sinon.spy()
+      instance._neg.preferredEncoding = sinon.spy()
+      instance._neg.preferredEncodings = sinon.spy()
+      done()
+    })
   })
 
   describe('Media Type', function() {

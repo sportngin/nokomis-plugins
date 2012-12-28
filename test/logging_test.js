@@ -17,8 +17,7 @@ describe('Logging', function() {
     Controller = ControllerFactory.create()
     Controller.addPlugin(Logging, config)
     instance = ControllerFactory.init(Controller)
-
-    done()
+    instance.runPlugins(done)
   })
 
   describe('Exists', function() {

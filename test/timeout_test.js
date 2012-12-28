@@ -13,8 +13,7 @@ describe('Timeout', function() {
     Controller.prototype.timeout = sinon.spy()
     Controller.addPlugin(Timeout, 0.05)
     instance = ControllerFactory.init(Controller)
-
-    done()
+    instance.runPlugins(done)
   })
 
   describe('Exists', function() {

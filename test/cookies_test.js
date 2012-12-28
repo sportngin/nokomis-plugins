@@ -12,8 +12,7 @@ describe('Cookies', function() {
     Controller = ControllerFactory.create()
     Controller.addPlugin(Cookies)
     instance = ControllerFactory.init(Controller)
-
-    done()
+    instance.runPlugins(done)
   })
 
   describe('Exists', function() {

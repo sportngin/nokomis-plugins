@@ -12,8 +12,7 @@ describe('Respond', function() {
     Controller = ControllerFactory.create()
     Controller.addPlugin(Respond)
     instance = ControllerFactory.init(Controller)
-
-    done()
+    instance.runPlugins(done)
   })
 
   describe('redirect', function() {

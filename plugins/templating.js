@@ -18,14 +18,9 @@ module.exports = Plugin.extend({
     callback()
   },
 
-  // this can be overridden in your subclassed template plugin or an individual controller
-  serialize: function() {
-    return this.model
-  },
-
   render: function(callback) {
     var tmpl = this.template
-    var data = this.serialize()
+    var data = this.model
     var options = this.templateOptions || {}
     this.tmpl.render(tmpl, data, options, callback)
   }

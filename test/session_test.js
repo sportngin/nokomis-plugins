@@ -12,8 +12,7 @@ describe('Session', function() {
     Controller = ControllerFactory.create()
     Controller.addPlugin(Session)
     instance = ControllerFactory.init(Controller)
-
-    done()
+    instance.runPlugins(done)
   })
 
   describe('Exists', function() {

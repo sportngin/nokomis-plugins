@@ -26,10 +26,11 @@ describe('Errors', function() {
     Controller.addPlugin(Errors)
     instance = ControllerFactory.init(Controller)
 
-    sinon.spy(instance, 'error')
-    sinon.spy(instance, '_render')
-
-    done()
+    instance.runPlugins(function() {
+      sinon.spy(instance, 'error')
+      sinon.spy(instance, '_render')
+      done()
+    })
   })
 
   describe('Exists', function() {
