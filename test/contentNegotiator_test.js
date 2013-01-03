@@ -15,12 +15,12 @@ describe('Content Negotiator', function() {
 
     instance.runPlugins(function(){
       // override the negotiator methods with spys
-      instance._neg.preferredMediaType = sinon.spy()
-      instance._neg.preferredMediaTypes = sinon.spy()
-      instance._neg.preferredLanguage = sinon.spy()
-      instance._neg.preferredLanguages = sinon.spy()
-      instance._neg.preferredEncoding = sinon.spy()
-      instance._neg.preferredEncodings = sinon.spy()
+      sinon.spy(instance._neg, 'preferredMediaType')
+      sinon.spy(instance._neg, 'preferredMediaTypes')
+      sinon.spy(instance._neg, 'preferredLanguage')
+      sinon.spy(instance._neg, 'preferredLanguages')
+      sinon.spy(instance._neg, 'preferredEncoding')
+      sinon.spy(instance._neg, 'preferredEncodings')
       done()
     })
   })
@@ -33,9 +33,9 @@ describe('Content Negotiator', function() {
     })
 
     it('should forward the preferredMediaType method call', function(done) {
-      instance.preferredMediaType('application/json')
+      instance.preferredMediaType(['application/json'])
       assert(instance._neg.preferredMediaType.calledOnce)
-      assert(instance._neg.preferredMediaType.calledWith('application/json'))
+      assert(instance._neg.preferredMediaType.calledWith(['application/json']))
       done()
     })
 
@@ -45,15 +45,24 @@ describe('Content Negotiator', function() {
     })
 
     it('should forward the preferredMediaTypes method call', function(done) {
-      instance.preferredMediaTypes('application/json')
+      instance.preferredMediaTypes(['application/json'])
       assert(instance._neg.preferredMediaTypes.calledOnce)
-      assert(instance._neg.preferredMediaTypes.calledWith('application/json'))
+      assert(instance._neg.preferredMediaTypes.calledWith(['application/json']))
       done()
     })
 
     it('should override controllers mediaType method', function(done) {
       instance.mediaType()
       assert(instance._neg.preferredMediaType.calledOnce)
+      done()
+    })
+
+    it('should use :format route param', function(done) {
+      instance.req.headers.accept = 'text/html,application/json'
+      instance.availableMediaTypes = ['text/html', 'application/json']
+      instance.route.params.format = 'json'
+      var type = instance.mediaType()
+      assert.equal(type, 'application/json')
       done()
     })
 
@@ -67,9 +76,9 @@ describe('Content Negotiator', function() {
     })
 
     it('should forward the preferredLanguage method call', function(done) {
-      instance.preferredLanguage('en')
+      instance.preferredLanguage(['en'])
       assert(instance._neg.preferredLanguage.calledOnce)
-      assert(instance._neg.preferredLanguage.calledWith('en'))
+      assert(instance._neg.preferredLanguage.calledWith(['en']))
       done()
     })
 
@@ -79,9 +88,9 @@ describe('Content Negotiator', function() {
     })
 
     it('should forward the preferredLanguages method call', function(done) {
-      instance.preferredLanguages('en')
+      instance.preferredLanguages(['en'])
       assert(instance._neg.preferredLanguages.calledOnce)
-      assert(instance._neg.preferredLanguages.calledWith('en'))
+      assert(instance._neg.preferredLanguages.calledWith(['en']))
       done()
     })
 
@@ -95,9 +104,9 @@ describe('Content Negotiator', function() {
     })
 
     it('should forward the preferredEncoding method call', function(done) {
-      instance.preferredEncoding('utf-8')
+      instance.preferredEncoding(['utf-8'])
       assert(instance._neg.preferredEncoding.calledOnce)
-      assert(instance._neg.preferredEncoding.calledWith('utf-8'))
+      assert(instance._neg.preferredEncoding.calledWith(['utf-8']))
       done()
     })
 
@@ -107,9 +116,9 @@ describe('Content Negotiator', function() {
     })
 
     it('should forward the preferredEncodings method call', function(done) {
-      instance.preferredEncodings('utf-8')
+      instance.preferredEncodings(['utf-8'])
       assert(instance._neg.preferredEncodings.calledOnce)
-      assert(instance._neg.preferredEncodings.calledWith('utf-8'))
+      assert(instance._neg.preferredEncodings.calledWith(['utf-8']))
       done()
     })
 

@@ -1,6 +1,13 @@
 
 var Plugin = require('nokomis/plugin')
 var Negotiator = require('negotiator')
+var Url = require('url')
+
+var formatMap = {
+  'html': 'text/html',
+  'json': 'application/json',
+  'xml': 'application/xml'
+}
 
 var ContentNegotiator = module.exports = Plugin.extend({
 
@@ -34,7 +41,17 @@ var ContentNegotiator = module.exports = Plugin.extend({
   },
 
   mediaType: function() {
-    var type = this.preferredMediaType(this.availableMediaTypes)
+    var availableTypes = this.availableMediaTypes
+
+    var fmt = this.route.params.format
+    if (fmt && fmt in formatMap) {
+      fmt = formatMap[fmt]
+      if (~availableTypes.indexOf(fmt)) {
+        availableTypes = [fmt]
+      }
+    }
+
+    var type = this.preferredMediaType(availableTypes)
     return type || this._defaultMediaType
   }
 

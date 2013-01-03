@@ -17,6 +17,7 @@ function create() {
 
 function init(C, conf) {
   var c = new C()
+  c.route = { params:{} }
   c.req = req()
   c.res = res()
   c._render = function(){}

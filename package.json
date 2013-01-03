@@ -1,6 +1,6 @@
 {
   "name" : "nokomis-plugins",
-  "version" : "0.0.1",
+  "version" : "0.0.2",
   "description" : "Plugins for nokomis",
   "main" : "./index.js",
   "dependencies" : {
