@@ -1,13 +1,12 @@
 {
   "name" : "nokomis-plugins",
-  "version" : "0.0.3",
+  "version" : "0.0.4",
   "description" : "Plugins for nokomis",
   "main" : "./index.js",
   "dependencies" : {
     "bunyan": "*",
     "cookies": "~0.3.x",
     "error-page" : "*",
-    "extendable" : ">=0.0.3",
     "glob": "3",
     "keygrip": "~0.2.0",
     "krumkake": ">=0.1.1",
@@ -16,9 +15,10 @@
     "request-timeout" : "*"
   },
   "peerDependencies" : {
-    "nokomis": "git://github.com/tstmedia/nokomis.git"
+    "nokomis": "git://github.com/tstmedia/nokomis"
   },
   "devDependencies" : {
+    "nokomis": "git://github.com/tstmedia/nokomis",
     "mocha" : "*",
     "sinon" : "*"
   },
