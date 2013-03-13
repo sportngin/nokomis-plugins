@@ -4,7 +4,7 @@
   "description" : "Plugins for nokomis",
   "main" : "./index.js",
   "dependencies" : {
-    "bunyan": "*",
+    "bunyan": "0.18.x",
     "cookies": "~0.3.x",
     "error-page" : "*",
     "glob": "3",
