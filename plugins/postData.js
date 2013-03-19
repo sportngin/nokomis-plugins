@@ -30,7 +30,7 @@ module.exports = Plugin.extend({
 
     req.data = {
       json: function(callback) {
-        if (!req.headers['content-type'].match(/\/(x-)?json$/)) {
+        if (!req.headers['content-type'].match(/\/(x-)?json(;.+?)?$/)) {
           callback({statusCode:415})
         }
         if (req.body)
