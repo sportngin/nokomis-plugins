@@ -18,6 +18,12 @@ module.exports = function() {
       remotePort: 12345,
       address: function() { return {address:'192.168.1.1', port:12345 } }
     },
-    headers: {}
+    headers: {},
+    log: {
+      info: sinon.spy(),
+      warn: sinon.spy(),
+      trace: sinon.spy(),
+      error: sinon.spy()
+    }
   }
 }

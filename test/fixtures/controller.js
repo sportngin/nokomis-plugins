@@ -1,4 +1,4 @@
-
+var sinon = require('sinon')
 var EventEmitter = require('events').EventEmitter
 var Plugin = require('nokomis/plugin')
 var req = require('./req')
@@ -20,8 +20,14 @@ function init(C, conf) {
   c.route = { params:{} }
   c.req = req()
   c.res = res()
-  c._render = function(){}
+  c._render = sinon.spy()
   c.templateOptions = {}
+  c.log = {
+    info: sinon.spy(),
+    warn: sinon.spy(),
+    trace: sinon.spy(),
+    error: sinon.spy()
+  }
   return c
 }
 
