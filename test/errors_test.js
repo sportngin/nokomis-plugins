@@ -11,13 +11,13 @@ var oldError
 describe('Errors', function() {
 
   before(function(done) {
-    oldError = console.error
-    console.error = sinon.spy()
+    // oldError = console.error
+    // console.error = sinon.spy()
     done()
   })
 
   after(function(done){
-    console.error = oldError
+    // console.error = oldError
     done()
   })
 
@@ -28,7 +28,6 @@ describe('Errors', function() {
 
     instance.runPlugins(function() {
       sinon.spy(instance, 'error')
-      sinon.spy(instance, '_render')
       done()
     })
   })
