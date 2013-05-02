@@ -6,6 +6,7 @@ var bunyan = require('bunyan')
 module.exports = Plugin.extend({
 
   initialize: function(config) {
+    console.warn('logging plugin is deprecated.')
     this._logger = bunyan.createLogger(config || { name:'Nokomis App' })
   },
 

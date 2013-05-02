@@ -59,6 +59,7 @@ module.exports = Plugin.extend({
         req.client.server.close()
 
       } catch (err) {
+        console.error('The request\'s domain error handler failed unexpectedly.')
         domain.dispose()
       }
     })
@@ -105,7 +106,7 @@ function handle500(req, res, data) {
  */
 
 function handleError(req, res, data, template) {
-  console.error('Responding with error', data)
+  req.log.error('Responding with error', data)
 
   var config = this.config || {}
   if (config.NODE_ENV != 'development') {
