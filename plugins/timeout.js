@@ -8,7 +8,7 @@ module.exports = Plugin.extend({
   },
 
   run: function(instance, callback) {
-    var seconds = this.conf || 20
+    var seconds = instance.timeoutLength || this.conf || 20
     requestTimeout(instance.req, instance.res, seconds)
     callback()
   }
