@@ -1,4 +1,4 @@
-var Templating = plugins.Templating
+var Templating = require('./templating')
 var Handlebars = require('handlebars')
 
 var HBTmpl = module.exports = Templating.extend({
