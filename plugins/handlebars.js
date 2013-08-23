@@ -1,9 +1,14 @@
 var Templating = require('./templating')
-var Handlebars = require('handlebars')
+var Handlebars
+
+try {
+  Handlebars = require('handlebars')
+} catch (ex) { }
 
 var HBTmpl = module.exports = Templating.extend({
 
   initialize: function(config) {
+    if (!Handlebars) throw new Error('Handlebars is not installed')
     var self = this
     HBTmpl.__super__.initialize.apply(this, arguments)
     this.tmpl.templatePath = config.templatePath
