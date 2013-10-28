@@ -9,7 +9,7 @@
     "error-page": "*",
     "glob": "3",
     "keygrip": "~0.2.0",
-    "krumkake": "0.2.x",
+    "krumkake": "0.2.1",
     "negotiator": "~0.2.x",
     "underscore": "*",
     "request-timeout": "*"
