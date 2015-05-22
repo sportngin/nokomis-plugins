@@ -1,6 +1,6 @@
 {
   "name": "nokomis-plugins",
-  "version": "0.0.15",
+  "version": "0.1.0",
   "description": "Plugins for nokomis",
   "main": "./index.js",
   "dependencies": {
@@ -27,9 +27,11 @@
     "node": ">=0.8.0",
     "npm": ">=1.2"
   },
-  "licenses": [{
-    "type": "MIT"
-  }],
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/tstmedia/nokomis-plugins.git"
