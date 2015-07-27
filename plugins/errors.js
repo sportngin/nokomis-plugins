@@ -17,6 +17,7 @@ module.exports = Plugin.extend({
     var config = this.config
 
     var defaultErrorPageConfig = {
+      401: handle401.bind(instance),
       403: handle403.bind(instance),
       404: handle404.bind(instance),
       500: handle500.bind(instance),
@@ -71,7 +72,20 @@ module.exports = Plugin.extend({
 })
 
 /**
- * Handle 404 error
+ * Handle 401 error
+ *
+ * @param {Object} req
+ * @param {Object} res
+ * @param {Object} data
+ * @api private
+ */
+
+function handle401(req, res, data) {
+  return handleError.call(this, req, res, data, 'errors/401')
+}
+
+/**
+ * Handle 403 error
  *
  * @param {Object} req
  * @param {Object} res
