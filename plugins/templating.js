@@ -7,7 +7,7 @@ var Templating = require('nokomis/templating')
 module.exports = Plugin.extend({
 
   initialize: function(config) {
-    var tmpl = this.tmpl = new Templating()
+    var tmpl = this.tmpl = new Templating())
     tmpl.templatePath = config.templatePath || tmpl.templatePath
   },
 
