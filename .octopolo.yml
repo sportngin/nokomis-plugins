@@ -1,0 +1,7 @@
+deploy_branch: master
+github_repo: sportngin/nokomis-plugins
+
+use_jira: true
+jira_user: sportngin-automation
+jira_password: 8dSmmrB9ramAM8F
+jira_url: https://sportngin.atlassian.net
