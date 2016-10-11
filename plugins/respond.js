@@ -57,7 +57,7 @@ var Respond = module.exports = Plugin.extend({
    */
 
   json: function (obj, status) {
-    this.send(JSON.stringify(obj || ''), status, {'content-type':'application/json'})
+    this.send(obj ? JSON.stringify(obj) : obj, status, {'content-type':'application/json'})
   },
 
   /**
