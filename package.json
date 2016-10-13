@@ -1,17 +1,17 @@
 {
   "name": "nokomis-plugins",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "Plugins for nokomis",
   "main": "./index.js",
   "dependencies": {
-    "bunyan": "0.18.x",
+    "bunyan": "~1.8.x",
     "cookies": "~0.3.x",
     "error-page": "*",
-    "glob": "3",
+    "glob": "7.1.x",
     "keygrip": "~0.2.0",
     "krumkake": "1.0.0",
     "negotiator": "~0.2.x",
-    "underscore": "*",
+    "underscore": "~1.8.x",
     "request-timeout": "*"
   },
   "peerDependencies": {

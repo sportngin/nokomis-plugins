@@ -42,7 +42,7 @@ var Respond = module.exports = Plugin.extend({
     if (headers) Object.keys(headers).forEach(function (h) {
       res.setHeader(h, headers[h])
     })
-    if (!Buffer.isBuffer(data)) data = new Buffer(data)
+    if (!Buffer.isBuffer(data)) data = new Buffer(data || '')
     res.setHeader('content-length', data.length)
     res.end(data)
   },
@@ -57,7 +57,7 @@ var Respond = module.exports = Plugin.extend({
    */
 
   json: function (obj, status) {
-    this.send(JSON.stringify(obj), status, {'content-type':'application/json'})
+    this.send(obj ? JSON.stringify(obj) : obj, status, {'content-type':'application/json'})
   },
 
   /**
